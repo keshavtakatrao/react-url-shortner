@@ -1,24 +1,34 @@
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory
+} from "react-router-dom";
 import './App.css';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Home from './home';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import SignIn from './signin'
+import SignUp from './siginup';
+
+
 
 function App() {
+
+  let history = useHistory();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Switch>
+          <Route path='/home' exact={true} component={Home} />
+          <Route path='/' exact='true' component={SignIn} />
+          <Route path='/sign-up' exact='true' component={SignUp} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
